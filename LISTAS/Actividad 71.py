@@ -3,30 +3,19 @@
 
 milista=[]
 letrasrepetidas=[]
-letra=input("Introduce una letra: ")
-if len(letra)==1:
-    print("Por favor, introduce solo una letra.")   
-elif letra in milista:
-    print(f"La letra {letra} ya se había introducido.")
-    if letra not in letrasrepetidas:
+while True:
+    letra=input("Introduce una letra: ")
+    if len(letra)==1:
+        print("Introduce solo una letra.")   
+    elif letra in milista:
+        print(f"La letra {letra} ya se había introducido.")
+        if letra not in letrasrepetidas:
             letrasrepetidas.append(letra)
     else:
         milista.append(letra)
-    respuesta=input("¿Deseas repetir? (si/no): ").strip().lower()
-    
-    while respuesta=="si":
-        if len(letra)==1:
-            print("Por favor, introduce solo una letra.")   
-        elif letra in milista:
-            print(f"La letra {letra} ya se había introducido.")
-        if letra not in letrasrepetidas:
-            letrasrepetidas.append(letra)
-        else:
-            milista.append(letra)
-            respuesta=input("¿Deseas repetir? (si/no): ").strip().lower()
-        if respuesta=="si":
-            break
-
+    respuesta=input("¿Deseas repetir? (si/no): ")
+    if respuesta=="si":
+        break
 print("Letras introducidas:", milista)
 print("Letras repetidas:", letrasrepetidas)
 
