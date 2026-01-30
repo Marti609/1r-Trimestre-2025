@@ -11,7 +11,8 @@ else:
     print("Sigue jugando")
     while intento!=palaba_random:
         intento=input("Introduce la palabra secreta: ")
-        if intento==palaba_random: 
+        if intento==palaba_random:
+            print("Acertaste")
             break
         else:
             print("Sigue jugando")

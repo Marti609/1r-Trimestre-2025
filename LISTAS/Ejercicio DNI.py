@@ -2,7 +2,10 @@
 dni=input("Introduce tu DNI: ")
 longitud_dni=len(dni)
 intentos=[]
+letras=["T","R","w","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"]
 
-for i in range (len(dni))==8:
-
-
+if not len(dni)==8:
+    print("el valor introducido no cumple con la longitud correcta")
+elif not dni .isnumeric:
+    print("el valor introducido debe ser numerico")
+    
