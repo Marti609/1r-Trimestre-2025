@@ -1,8 +1,9 @@
 import random
 import time
 tiempo = time.time()
+historial_ganadas = []
+historial_perdidas = []
 lista_palabras = ["python", "programacion", "ahorcado", "desarrollo", "inteligencia", "computadora", "juego", "palabra", "adivinar", "letra"]
-lista_partidas = []
 lista_ahorcado = 8
 aciertos = []
 fallos = []
@@ -37,27 +38,33 @@ while lista_ahorcado > 0:
         lista_ahorcado -= 1
     if all(letra in aciertos for letra in palabra):
         print(f"¡Felicidades! Has adivinado la palabra: {palabra}")
-        print(f" Fallos: {fallos}")
+        print(f"Fallos: {fallos}")
         print(f"Aciertos: {aciertos}")
+        historial_ganadas.append(palabra)
         fin = time.time()  
         print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
         break
 else:
-    print(f" Fallos: {fallos}")
+    print(f"Fallos: {fallos}")
     print(f"Aciertos: {aciertos}")
     print(f"Has perdido. La palabra era: {palabra}")
+    historial_perdidas.append(palabra)
     fin = time.time()  
     print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
+
+respuesta_historial = input("Antes de preguntarte si quieres jugar otra partida. ¿Quieres ver tu historial de partidas s/n? ")
+respuesta_historial_buena = respuesta_historial.lower()
+if respuesta_historial_buena == "s":
+    print(F"Palabras acertadas: {historial_ganadas}")
+    print(f"Palabras perdidas: {historial_perdidas}")
 
 respuesta=input("Quieres jugar otra partida s/n? ")
 respuesta_buena=respuesta.lower()
 
 if respuesta_buena == "s":
-    lista_partidas.append("Ganada")
     while respuesta_buena == "s":
         tiempo = time.time()
         lista_palabras = ["python", "programacion", "ahorcado", "desarrollo", "inteligencia", "computadora", "juego", "palabra", "adivinar", "letra"]
-        lista_partidas = []
         lista_ahorcado = 8
         aciertos = []
         fallos = []
@@ -92,18 +99,27 @@ if respuesta_buena == "s":
                 lista_ahorcado -= 1
             if all(letra in aciertos for letra in palabra):
                 print(f"¡Felicidades! Has adivinado la palabra: {palabra}")
-                print(f" Fallos: {fallos}")
+                print(f"Fallos: {fallos}")
                 print(f"Aciertos: {aciertos}")
+                historial_ganadas.append(palabra)
                 fin = time.time()  
                 print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
                 break
         else:
-            print(f" Fallos: {fallos}")
+            print(f"Fallos: {fallos}")
             print(f"Aciertos: {aciertos}")
             print(f"Has perdido. La palabra era: {palabra}")
+            historial_perdidas.append(palabra)
             fin = time.time()  
             print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
-        respuesta=input("Quieres jugar otra partida s/n? ")
+        respuesta_historial = input("Antes de preguntarte si quieres jugar otra partida. ¿Quieres ver tu historial de partidas s/n? ")
+        respuesta_historial_buena = respuesta_historial.lower()
+        if respuesta_historial_buena == "s":
+            print(F"Palabras acertadas: {historial_ganadas}")
+            print(f"Palabras perdidas: {historial_perdidas}")
+        else:
+            continue
+        respuesta = input("Quieres jugar otra partida s/n? ")
         respuesta_buena=respuesta.lower()
 
 print("¡Hasta la proxima!")
