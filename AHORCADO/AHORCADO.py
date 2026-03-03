@@ -4,7 +4,7 @@ tiempo = time.time()
 historial_ganadas = []
 historial_perdidas = []
 lista_palabras = ["python", "programacion", "ahorcado", "desarrollo", "inteligencia", "computadora", "juego", "palabra", "adivinar", "letra"]
-lista_ahorcado = 8
+intentos = 8
 aciertos = []
 fallos = []
 palabra = random.choice(lista_palabras)
@@ -15,8 +15,8 @@ for letra in palabra:
         else:
             tablero += "_ "
         tablero.strip()
-while lista_ahorcado > 0:
-    print(f"{lista_ahorcado} intentos restantes")
+while intentos > 0:
+    print(f"{intentos} intentos restantes")
     print(tablero)
     letra = input("Adivina una letra: ").lower()
     if letra in aciertos:
@@ -35,7 +35,7 @@ while lista_ahorcado > 0:
     else:
         print("¡Incorrecto!")
         fallos.append(letra)
-        lista_ahorcado -= 1
+        intentos -= 1
     if all(letra in aciertos for letra in palabra):
         print(f"¡Felicidades! Has adivinado la palabra: {palabra}")
         print(f"Fallos: {fallos}")
@@ -65,7 +65,7 @@ if respuesta_buena == "s":
     while respuesta_buena == "s":
         tiempo = time.time()
         lista_palabras = ["python", "programacion", "ahorcado", "desarrollo", "inteligencia", "computadora", "juego", "palabra", "adivinar", "letra"]
-        lista_ahorcado = 8
+        intentos = 8
         aciertos = []
         fallos = []
         palabra = random.choice(lista_palabras)
@@ -76,8 +76,8 @@ if respuesta_buena == "s":
                 else:
                     tablero += "_ "
                 tablero.strip()
-        while lista_ahorcado > 0:
-            print(f"{lista_ahorcado} intentos restantes")
+        while intentos > 0:
+            print(f"{intentos} intentos restantes")
             print(tablero)
             letra = input("Adivina una letra: ").lower()
             if letra in aciertos:
@@ -96,7 +96,7 @@ if respuesta_buena == "s":
             else:
                 print("¡Incorrecto!")
                 fallos.append(letra)
-                lista_ahorcado -= 1
+                intentos -= 1
             if all(letra in aciertos for letra in palabra):
                 print(f"¡Felicidades! Has adivinado la palabra: {palabra}")
                 print(f"Fallos: {fallos}")
