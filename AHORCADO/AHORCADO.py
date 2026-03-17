@@ -183,10 +183,9 @@ if respuesta_buena == "s":
             if respuesta_historial_buena == "s":
                 print(F"Palabras acertadas: {historial_ganadas}")
                 print(f"Palabras perdidas: {historial_perdidas}")
-            else:
-                continue
-            respuesta = input("Quieres jugar otra partida s/n? ")
-            respuesta_buena = respuesta.lower()
+            else:             
+                respuesta = input("Quieres jugar otra partida s/n? ")
+                respuesta_buena = respuesta.lower()
 
 print("¡Hasta la proxima!")
 
