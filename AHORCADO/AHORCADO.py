@@ -1,33 +1,45 @@
 import random
 import time
+
 tiempo = time.time()
 historial_ganadas = []
 historial_perdidas = []
+
 lista_palabras = ["python", "programacion", "ahorcado", "desarrollo", "inteligencia", "computadora", "juego", "palabra", "adivinar", "letra"]
+
 intentos = 8
 aciertos = []
 fallos = []
+
 print("¡Bienvenido al juego del Ahorcado! Tienes 8 intentos para adivinar la palabra oculta.")
-time.sleep(8)
+time.sleep(2)
+
 palabra = random.choice(lista_palabras)
+
 tablero = ""
 for letra in palabra:       
         if letra in aciertos:
             tablero += letra + " "
         else:
             tablero += "_ "
-        tablero.strip()
 while intentos > 0:
     print(f"{intentos} intentos restantes")
     print(tablero)
+        
     letra = input("Adivina una letra: ").lower()
-    if letra in aciertos:
-        print("Ya has adivinado esa letra. Intenta con otra.")
+        
+    if len(letra) != 1 or not letra.isalpha():
+        print("Introduce solo una letra válida.")
+        continue
+        
+    if letra in aciertos or in fallos:
+        print("Ya has usado esa letra. Intenta con otra.")
         fallos.append(letra)
         continue
+            
     if letra in palabra:
         print("¡Correcto!")
-        aciertos.append(letra)
+        aciertos.append(letra)    
         tablero = ""
         for letra_palabra in palabra:
             if letra_palabra in aciertos:
@@ -43,6 +55,7 @@ while intentos > 0:
         print(f"Fallos: {fallos}")
         print(f"Aciertos: {aciertos}")
         historial_ganadas.append(palabra)
+            
         fin = time.time()  
         print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
         break
@@ -51,6 +64,7 @@ else:
     print(f"Aciertos: {aciertos}")
     print(f"Has perdido. La palabra era: {palabra}")
     historial_perdidas.append(palabra)
+        
     fin = time.time()  
     print(f"Tiempo transcurrido: {fin - tiempo:.2f} segundos")
 
@@ -63,8 +77,7 @@ if respuesta_historial_buena == "s":
 respuesta = input("Quieres jugar otra partida s/n? ")
 respuesta_buena = respuesta.lower()
 
-if respuesta_buena == "s":
-    while respuesta_buena == "s":
+while respuesta_buena == "s":
         juego_complicado = input("¿Quieres jugar una partida complicada? s/n ")
         juego_complicado_bueno = juego_complicado.lower()
         if juego_complicado_bueno == "s":
